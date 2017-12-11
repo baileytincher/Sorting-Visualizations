@@ -12,7 +12,7 @@ function setup() {
 	}	
 	
 	dispPoints(arr);
-	mergeSort(arr);
+	selectionSort(arr);
 	console.log(dataBank.length);
 }
 
@@ -77,10 +77,11 @@ function selectionSort(list) {
     for (var i = 0; i < list.length; i++) {
         minVal = list[i];
         index = i;
-        for (int j = i; j < list.length; j++) {
+        for (var j = i; j < list.length; j++) {
             if (list[j] < minVal) {
                 minVal = list[j];
                 index = j;
+				dataBank.push(arrCopy(list));
             }
         }
         if (minVal < list[i]) {
@@ -88,6 +89,7 @@ function selectionSort(list) {
             list[i] = list[index];
             list[index] = temp;
         }
+		
     }
     return list;
 }
