@@ -10,7 +10,7 @@ var arr1 = [];
 var arr2 = [];
 var arr3 = [];
 function setup() {
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 15; i++) {
     var n = Math.random();
     arr1.push(n);
     arr2.push(n);
@@ -26,9 +26,17 @@ var selection = function( p ) {
     p.createCanvas(1000, 300);
     p.pixelDensity(1);
     p.background(200);
-    
+
+    p.textAlign(CENTER, CENTER);
+    p.fill(0, 0, 255, 40);
+    p.textSize(100);
+    p.text("Selection Sort", 500, 150);
+    p.textSize(50);
+    p.text(0, 500, 225);
+
     dispPoints(arr1);
     selectionSort(arr1);
+
     console.log("ss:" + dataBank.length);
   };
 
@@ -39,6 +47,14 @@ var selection = function( p ) {
       p.clear();
       p.background(200);
       dispPoints(dataBank[i]);
+
+      p.textAlign(CENTER, CENTER);
+      p.fill(0, 0, 255, 40);
+      p.textSize(100);
+      p.text("Selection Sort", 500, 150);
+      p.textSize(50);
+      p.text(i + 1, 500, 225);
+
       i++;
     }
     return false;
@@ -62,27 +78,21 @@ var selection = function( p ) {
   }
 
   function selectionSort(list) {
-    var minVal = 0;
-    var temp = 0;
-    var index = 0;
-
-    for (var i = 0; i < list.length; i++) {
-        minVal = list[i];
-        index = i;
-        for (var j = i; j < list.length; j++) {
+    for (var i = 0; i < list.length - 1; i++) {
+        var minVal = list[i];
+        var index = i;
+        for (var j = i + 1; j < list.length; j++) {
             if (list[j] < minVal) {
                 minVal = list[j];
                 index = j; 
             }
             dataBank.push(arrCopy(list));
         }
-        if (minVal < list[i]) {
-            temp = list[i];
-            list[i] = list[index];
-            list[index] = temp;
-            dataBank.push(arrCopy(list));
-        }
+        var temp = list[i];
+        list[i] = list[index];
+        list[index] = temp;
     }
+    dataBank.push(arrCopy(list));
     return list;
   }
   
@@ -98,6 +108,13 @@ var bubble = function( p ) {
     p.pixelDensity(1);
     p.background(200);
 
+    p.textAlign(CENTER, CENTER);
+    p.fill(0, 0, 255, 40);
+    p.textSize(100);
+    p.text("Bubble Sort", 500, 150);
+    p.textSize(50);
+    p.text(0, 500, 225);
+
     dispPoints(arr2);
     bubbleSort(arr2);
     console.log("bs:" + dataBank.length);
@@ -109,6 +126,14 @@ var bubble = function( p ) {
       p.clear();
       p.background(200);
       dispPoints(dataBank[i]);
+
+      p.textAlign(CENTER, CENTER);
+      p.fill(0, 0, 255, 40);
+      p.textSize(100);
+      p.text("Bubble Sort", 500, 150);
+      p.textSize(50);
+      p.text(i + 1, 500, 225);
+
       i++;
     }
     return false;
@@ -130,12 +155,12 @@ var bubble = function( p ) {
   }
 
   function bubbleSort(array) {
-    for (var i = 1; i < array.length; i++) {
-        for (var j = 1; j < array.length; j++) {
-            if (array[j] < array[j - 1]) {
+    for (var n = 0; n < array.length - 1; n++) {
+        for (var j = 0; j < array.length - 1; j++) {
+            if (array[j] > array[j + 1]) {
                 var temp = array[j];
-                array[j] = array[j - 1];
-                array[j - 1] = temp;
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
             }
             dataBank.push(arrCopy(array));
         }
@@ -153,7 +178,14 @@ var quick = function( p ) {
     p.createCanvas(1000, 300);
     p.pixelDensity(1);
     p.background(200);
-  
+
+    p.textAlign(CENTER, CENTER);
+    p.fill(0, 0, 255, 40);
+    p.textSize(100);
+    p.text("Quick Sort", 500, 150);
+    p.textSize(50);
+    p.text(0, 500, 225);
+
     dispPoints(arr3);
     quickSort(arr3, 0, arr3.length - 1);
 
@@ -166,6 +198,14 @@ var quick = function( p ) {
       p.clear();
       p.background(200);
       dispPoints(dataBank[i]);
+
+      p.textAlign(CENTER, CENTER);
+      p.fill(0, 0, 255, 40);
+      p.textSize(100);
+      p.text("Quick Sort", 500, 150);
+      p.textSize(50);
+      p.text(i + 1, 500, 225);
+
       i++;
     }
     return false;
