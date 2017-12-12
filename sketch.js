@@ -41,7 +41,7 @@ var selection = function( p ) {
   };
 
   var i = 0;
-  
+  var flag = false;
   p.keyPressed = function() {
     if (i < dataBank.length){
       p.clear();
@@ -56,6 +56,7 @@ var selection = function( p ) {
       p.text(i + 1, 500, 225);
 
       i++;
+      if (i == dataBank.length - 1) flag = true;
     }
     return false;
   }
@@ -65,10 +66,13 @@ var selection = function( p ) {
     var ptsDisp = [];
     p.fill(0);
     var delx = (p.canvas.width - 20) / data.length; //Padding of width 10 on either side
-    
+    if (flag) {
+      p.fill(0, 200, 43, 255);
+      p.stroke(0, 200, 43, 255);
+    }
     for(var i = 0; i < data.length; i++) {
       var pnt = [10 + delx * i, p.canvas.height - 10 - (data[i] * (p.canvas.height / 1.5))];
-    
+      
       p.ellipse(pnt[0], pnt[1], 10, 10);
       if(ptsDisp.length > 0) {
         p.line(ptsDisp[ptsDisp.length - 1][0], ptsDisp[ptsDisp.length - 1][1], pnt[0], pnt[1]);
@@ -121,6 +125,7 @@ var bubble = function( p ) {
   };
 
   var i = 0;
+  var flag = false;
   p.keyReleased = function() {
     if (i < dataBank.length){
       p.clear();
@@ -135,9 +140,11 @@ var bubble = function( p ) {
       p.text(i + 1, 500, 225);
 
       i++;
+      if (i == dataBank.length - 1) flag = true;
     }
     return false;
   }
+
   function dispPoints(data) {
     var ptsDisp = [];
     p.fill(0);
@@ -146,6 +153,10 @@ var bubble = function( p ) {
     for(var i = 0; i < data.length; i++) {
       var pnt = [10 + delx * i, p.canvas.height - 10 - (data[i] * (p.canvas.height / 1.5))];
     
+      if (flag) {
+        p.fill(0, 200, 43, 255);
+        p.stroke(0, 200, 43, 255);
+      }
       p.ellipse(pnt[0], pnt[1], 10, 10);
       if(ptsDisp.length > 0) {
         p.line(ptsDisp[ptsDisp.length - 1][0], ptsDisp[ptsDisp.length - 1][1], pnt[0], pnt[1]);
@@ -188,17 +199,17 @@ var quick = function( p ) {
 
     dispPoints(arr3);
     quickSort(arr3, 0, arr3.length - 1);
-
+    
     console.log("qs:" + dataBank.length);
   };
 
   var i = 0;
+  var flag = false;
   p.keyReleased = function() {
     if (i < dataBank.length){
       p.clear();
       p.background(200);
       dispPoints(dataBank[i]);
-
       p.textAlign(CENTER, CENTER);
       p.fill(0, 0, 255, 40);
       p.textSize(100);
@@ -207,21 +218,28 @@ var quick = function( p ) {
       p.text(i + 1, 500, 225);
 
       i++;
+      if (i == dataBank.length - 1) flag = true;
     }
     return false;
   }
+
   function dispPoints(data) {
     var ptsDisp = [];
     p.fill(0);
     var delx = (p.canvas.width - 20) / data.length; //Padding of width 10 on either side
     
-    for(var i = 0; i < data.length; i++) {
-      var pnt = [10 + delx * i, p.canvas.height - 10 - (data[i] * (p.canvas.height / 1.5))];
+    for(var x = 0; x < data.length; x++) {
+      var pnt = [10 + delx * x, p.canvas.height - 10 - (data[x] * (p.canvas.height / 1.5))];
     
+      if (flag) {
+        p.fill(0, 200, 43, 255);
+        p.stroke(0, 200, 43, 255);
+      }
       p.ellipse(pnt[0], pnt[1], 10, 10);
       if(ptsDisp.length > 0) {
         p.line(ptsDisp[ptsDisp.length - 1][0], ptsDisp[ptsDisp.length - 1][1], pnt[0], pnt[1]);
       }
+
       ptsDisp.push(pnt);
     }
   }
