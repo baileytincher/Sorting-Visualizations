@@ -10,7 +10,7 @@ var arr1 = [];
 var arr2 = [];
 var arr3 = [];
 function setup() {
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 20; i++) {
     var n = Math.random();
     arr1.push(n);
     arr2.push(n);
