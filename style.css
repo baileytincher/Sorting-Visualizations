@@ -2,13 +2,22 @@ html, body {
   height: 100%;
 }
 
-body {
-  margin: 0;
-  display: flex;
-
-  /* This centers our sketch horizontally. */
+#container {
+  height: 100%;
+  width: 100%;
+    /* This centers our sketch horizontally. */
   justify-content: center;
+  display: flex;
+}
+#topThing {
+  position: relative;
 
-  /* This centers our sketch vertically. */
-  align-items: center;
+}
+#middleThing {
+  position: absolute;
+  top: 350px;
+}
+#bottomThing {
+  position: absolute;
+  top: 700px;
 }
