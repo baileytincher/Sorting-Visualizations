@@ -10,7 +10,7 @@ var arr1 = [];
 var arr2 = [];
 var arr3 = [];
 function setup() {
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 10; i++) {
     var n = Math.random();
     arr1.push(n);
     arr2.push(n);
@@ -35,7 +35,7 @@ var selection = function( p ) {
   var i = 0;
   
   p.keyPressed = function() {
-    if (keyCode === LEFT_ARROW && i < dataBank.length){
+    if (i < dataBank.length){
       p.clear();
       p.background(200);
       dispPoints(dataBank[i]);
@@ -80,6 +80,7 @@ var selection = function( p ) {
             temp = list[i];
             list[i] = list[index];
             list[index] = temp;
+            dataBank.push(arrCopy(list));
         }
     }
     return list;
@@ -104,7 +105,7 @@ var bubble = function( p ) {
 
   var i = 0;
   p.keyReleased = function() {
-    if (p.keyCode === p.LEFT_ARROW && i < dataBank.length){
+    if (i < dataBank.length){
       p.clear();
       p.background(200);
       dispPoints(dataBank[i]);
@@ -154,14 +155,14 @@ var quick = function( p ) {
     p.background(200);
   
     dispPoints(arr3);
-    quickSort(arr3, 0, arr3.length);
+    quickSort(arr3, 0, arr3.length - 1);
 
     console.log("qs:" + dataBank.length);
   };
 
   var i = 0;
   p.keyReleased = function() {
-    if (p.keyCode === p.LEFT_ARROW && i < dataBank.length){
+    if (i < dataBank.length){
       p.clear();
       p.background(200);
       dispPoints(dataBank[i]);
